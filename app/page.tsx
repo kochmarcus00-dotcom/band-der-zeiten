@@ -8,6 +8,7 @@ import Quote from "../components/Quote";
 import Book from "../components/Book";
 import Footer from "../components/Footer";
 import ScrollTop from "../components/ScrollTop";
+import Journey from "../components/Journey";
 
 export default function Home() {
   return (
@@ -51,6 +52,7 @@ export default function Home() {
         src="/kap5.png"
         alt="Krieg"
       />
+      <Journey />
 
       <Footer />
       <ScrollTop />

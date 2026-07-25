@@ -37,3 +37,603 @@ h4 {
   background: var(--gold);
   color: white;
 }
+
+/* ===========================
+   GOD RAYS
+=========================== */
+
+.hero-rays {
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+}
+
+.hero-rays::before {
+
+  content: "";
+
+  position: absolute;
+
+  left: -10%;
+
+  top: -20%;
+
+  width: 140%;
+
+  height: 140%;
+
+  background:
+    repeating-linear-gradient(110deg,
+
+      rgba(255, 255, 255, .05) 0px,
+
+      rgba(255, 255, 255, .02) 90px,
+
+      transparent 160px,
+
+      transparent 260px);
+
+  filter: blur(5px);
+
+  opacity: .22;
+
+  animation: moveRays 26s linear infinite;
+
+}
+
+@keyframes moveRays {
+
+  from {
+
+    transform: translateX(-80px);
+
+  }
+
+  to {
+
+    transform: translateX(80px);
+
+  }
+
+}
+
+@keyframes breathe {
+
+  0% {
+
+    transform: scale(1);
+
+  }
+
+  50% {
+
+    transform: scale(1.025);
+
+  }
+
+  100% {
+
+    transform: scale(1);
+
+  }
+
+}
+
+.hero-image {
+
+  animation: breathe 18s ease-in-out infinite;
+
+}
+
+/* ===========================
+   GOLD LINE
+=========================== */
+
+.gold-line {
+
+  position: relative;
+
+  overflow: hidden;
+
+}
+
+.gold-line::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: -120px;
+
+  top: 0;
+
+  width: 120px;
+
+  height: 100%;
+
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, .95),
+      transparent);
+
+  animation: goldSweep 7s ease-in-out infinite;
+
+}
+
+@keyframes goldSweep {
+
+  0% {
+    left: -120px;
+  }
+
+  100% {
+    left: 220px;
+  }
+
+}
+
+/* ===========================
+   HERO TITLE
+=========================== */
+
+.hero-title {
+
+  text-shadow:
+
+    0 0 18px rgba(255, 255, 255, .10),
+
+    0 0 70px rgba(255, 255, 255, .08);
+
+}
+
+.hero-button {
+
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    background .35s ease;
+
+}
+
+.hero-button:hover {
+
+  transform: translateY(-3px);
+
+  box-shadow:
+
+    0 18px 45px rgba(200, 164, 107, .28);
+
+}
+
+/* ==========================================
+   ARTEFAKT COVER
+========================================== */
+
+.artifact-cover {
+
+  position: relative;
+
+  z-index: 5;
+
+  transition:
+    transform .45s ease;
+
+  filter:
+    drop-shadow(0 0 18px rgba(255, 255, 255, .06));
+
+}
+
+.artifact-cover:hover {
+
+  transform:
+    scale(1.035);
+
+}
+
+.artifact-glow-gold {
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 340px;
+  height: 500px;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(ellipse,
+
+      rgba(255, 205, 90, .75) 0%,
+
+      rgba(255, 175, 40, .45) 35%,
+
+      rgba(255, 140, 30, .18) 60%,
+
+      transparent 82%);
+
+  filter: blur(70px);
+
+  opacity: .95;
+
+  z-index: 1;
+
+}
+
+.artifact-glow-blue {
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 340px;
+  height: 500px;
+
+  transform: translate(-50%, -50%);
+
+  background: radial-gradient(ellipse,
+
+      rgba(90, 200, 255, .75) 0%,
+
+      rgba(90, 180, 255, .42) 35%,
+
+      rgba(70, 150, 255, .18) 60%,
+
+      transparent 82%);
+
+  filter: blur(70px);
+
+  opacity: .95;
+
+  z-index: 1;
+
+}
+
+/* ==========================================================
+   NORDISCHE WELT
+   MYSTIC LIGHT ENGINE
+========================================================== */
+
+/* ==========================================================
+   NORDIC LIGHT ENGINE
+========================================================== */
+
+.nordic-light {
+
+  position: absolute;
+
+  border-radius: 9999px;
+
+  pointer-events: none;
+
+  filter: blur(180px);
+
+  mix-blend-mode: screen;
+
+  animation:
+    auroraFloat 24s ease-in-out infinite,
+    auroraPulse 14s ease-in-out infinite;
+
+}
+
+/* ================= BLUE ================= */
+
+.light-blue {
+
+  background: radial-gradient(circle,
+
+      rgba(90, 220, 255, .90) 0%,
+
+      rgba(90, 220, 255, .35) 40%,
+
+      rgba(90, 220, 255, .08) 70%,
+
+      transparent 100%);
+
+}
+
+/* ================= GOLD ================= */
+
+.light-gold {
+
+  background: radial-gradient(circle,
+
+      rgba(215, 178, 109, .75) 0%,
+
+      rgba(215, 178, 109, .30) 45%,
+
+      rgba(215, 178, 109, .08) 70%,
+
+      transparent 100%);
+
+}
+
+/* ================= RED ================= */
+
+.light-red {
+
+  background: radial-gradient(circle,
+
+      rgba(185, 68, 68, .70) 0%,
+
+      rgba(185, 68, 68, .25) 45%,
+
+      rgba(185, 68, 68, .06) 70%,
+
+      transparent 100%);
+
+}
+
+@keyframes auroraFloat {
+
+  0% {
+
+    transform:
+      translate3d(0, 0, 0) scale(1);
+
+  }
+
+  25% {
+
+    transform:
+      translate3d(-40px, -30px, 0) scale(1.06);
+
+  }
+
+  50% {
+
+    transform:
+      translate3d(20px, -60px, 0) scale(1.10);
+
+  }
+
+  75% {
+
+    transform:
+      translate3d(40px, -20px, 0) scale(1.05);
+
+  }
+
+  100% {
+
+    transform:
+      translate3d(0, 0, 0) scale(1);
+
+  }
+
+}
+
+@keyframes auroraPulse {
+
+  0% {
+
+    opacity: .10;
+
+  }
+
+  50% {
+
+    opacity: .22;
+
+  }
+
+  100% {
+
+    opacity: .10;
+
+  }
+
+}
+
+/* ==========================================================
+   PREMIUM ARTIFACT
+========================================================== */
+
+.artifact {
+
+  position: relative;
+
+  isolation: isolate;
+
+  overflow: hidden;
+
+  border-radius: 36px;
+
+  background:
+    linear-gradient(180deg,
+      rgba(255, 255, 255, .045),
+      rgba(255, 255, 255, .015));
+
+  backdrop-filter: blur(24px);
+
+  transition:
+
+    transform .7s,
+
+    box-shadow .7s,
+
+    border-color .7s;
+
+}
+
+.artifact::before {
+
+  content: "";
+
+  position: absolute;
+
+  inset: -120px;
+
+  background:
+
+    radial-gradient(circle,
+
+      rgba(90, 210, 255, .16),
+
+      transparent 60%);
+
+  opacity: 0;
+
+  transition: .9s;
+
+  filter: blur(70px);
+
+}
+
+.artifact:hover::before {
+
+  opacity: 1;
+
+  transform: scale(1.2);
+
+}
+
+.artifact::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  border-radius: inherit;
+
+  border: 1px solid rgba(255, 255, 255, .05);
+
+  pointer-events: none;
+
+}
+
+.artifact:hover {
+
+  box-shadow:
+
+    0 0 30px rgba(215, 178, 109, .08),
+
+    0 0 120px rgba(90, 220, 255, .14);
+
+}
+
+
+/* ==========================================================
+   RUNE ENGINE
+========================================================== */
+
+.rune {
+
+  position: absolute;
+  z-index: 0;
+
+  pointer-events: none;
+  user-select: none;
+
+  font-size: clamp(48px, 6vw, 120px);
+  font-weight: 200;
+  line-height: 1;
+
+  opacity: .18;
+
+  animation:
+    runeFloat 16s ease-in-out infinite,
+    runePulse 7s ease-in-out infinite;
+
+  will-change: transform, opacity, filter;
+}
+
+/* Farben */
+
+.rune.blue {
+
+  color: #63d8ff;
+
+  text-shadow:
+    0 0 8px rgba(99, 216, 255, .9),
+    0 0 18px rgba(99, 216, 255, .8),
+    0 0 40px rgba(99, 216, 255, .6),
+    0 0 90px rgba(99, 216, 255, .35);
+
+}
+
+.rune.gold {
+
+  color: #d7b26d;
+
+  text-shadow:
+    0 0 8px rgba(215, 178, 109, .9),
+    0 0 20px rgba(215, 178, 109, .8),
+    0 0 45px rgba(215, 178, 109, .6),
+    0 0 90px rgba(215, 178, 109, .35);
+
+}
+
+.rune.red {
+
+  color: #c95555;
+
+  text-shadow:
+    0 0 8px rgba(201, 85, 85, .9),
+    0 0 20px rgba(201, 85, 85, .7),
+    0 0 50px rgba(201, 85, 85, .45);
+
+}
+
+/* Schweben */
+
+@keyframes runeFloat {
+
+  0% {
+
+    transform:
+      translateY(0) rotate(0deg);
+
+  }
+
+  50% {
+
+    transform:
+      translateY(-16px) rotate(1deg);
+
+  }
+
+  100% {
+
+    transform:
+      translateY(0) rotate(0deg);
+
+  }
+
+}
+
+/* Pulsieren */
+
+@keyframes runePulse {
+
+  0% {
+
+    opacity: .08;
+    filter: blur(.2px);
+
+  }
+
+  50% {
+
+    opacity: .28;
+    filter: blur(.7px);
+
+  }
+
+  100% {
+
+    opacity: .08;
+    filter: blur(.2px);
+
+  }
+
+}

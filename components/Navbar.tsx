@@ -25,7 +25,6 @@ export default function Navbar() {
             <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-8">
 
                 {/* Logo */}
-
                 <a
                     href="#top"
                     className="tracking-[0.35em] text-sm uppercase text-[#d8b16d]"
@@ -34,8 +33,7 @@ export default function Navbar() {
                 </a>
 
                 {/* Navigation */}
-
-                <nav className="hidden gap-10 md:flex">
+                <nav className="hidden md:flex items-center gap-10 text-sm">
 
                     <a href="#story" className="hover:text-[#d8b16d] transition">
                         Die Welt
@@ -47,6 +45,27 @@ export default function Navbar() {
 
                     <a href="#book" className="hover:text-[#d8b16d] transition">
                         Buch
+                    </a>
+
+                    <a
+                        href="/nordische-welt"
+                        className="hover:text-[#d8b16d] transition"
+                    >
+                        Nordische Welt
+                    </a>
+
+                    <a
+                        href="/datenschutz"
+                        className="hover:text-[#d8b16d] transition"
+                    >
+                        Datenschutz
+                    </a>
+
+                    <a
+                        href="/impressum"
+                        className="hover:text-[#d8b16d] transition"
+                    >
+                        Impressum
                     </a>
 
                     <a

@@ -2,79 +2,114 @@ import Image from "next/image";
 
 export default function Book() {
     return (
-
         <section
             id="book"
-            className="bg-[#090909] py-40"
+            className="bg-[#090909] py-44"
         >
 
             <div className="mx-auto max-w-7xl px-8">
 
-                <div className="grid items-center gap-24 lg:grid-cols-2">
+                {/* Überschrift */}
 
-                    {/* Cover */}
+                <div className="text-center">
 
-                    <div className="flex justify-center">
+                    <p className="uppercase tracking-[0.45em] text-[#c8a46b]">
 
-                        <Image
-                            src="/cover.jpg"
-                            alt="Band der Zeiten"
-                            width={450}
-                            height={680}
-                            className="rounded-xl shadow-[0_60px_120px_rgba(0,0,0,.55)]"
-                        />
+                        Die Welt von Band der Zeiten
 
-                    </div>
+                    </p>
 
-                    {/* Inhalt */}
+                    <h2 className="mt-8 text-5xl md:text-7xl font-semibold">
 
-                    <div>
+                        Nimm ein Stück
+                        <br />
+                        dieser Welt mit.
 
-                        <p className="uppercase tracking-[0.45em] text-[#d8b16d]">
+                    </h2>
 
-                            Das Buch
+                    <p className="mx-auto mt-10 max-w-3xl text-xl leading-10 text-stone-300">
+
+                        Manche Geschichten enden mit der letzten Seite.
+                        Andere begleiten dich noch lange danach.
+                        Entdecke den Roman und den offiziellen Soundtrack –
+                        zwei Wege, dieselbe Reise zu erleben.
+
+                    </p>
+
+                    <div className="mx-auto mt-16 h-px w-40 bg-[#c8a46b]" />
+
+                </div>
+
+
+                {/* Produkte */}
+
+                <div className="mt-28 grid gap-20 lg:grid-cols-2">
+
+
+                    {/* ================================================= */}
+
+                    {/* ROMAN */}
+
+                    {/* ================================================= */}
+
+                    <div className="group rounded-3xl border border-white/15 bg-gradient-to-b from-white/[0.05] via-white/[0.025] to-white/[0.02] p-10 backdrop-blur-xl transition duration-500 hover:-translate-y-3 hover:border-[#c8a46b]/40 hover:shadow-[0_50px_120px_rgba(0,0,0,.65),0_0_90px_rgba(255,190,80,.10)]">
+
+                        <p className="uppercase tracking-[0.55em] text-xs text-[#d8b16d]/80">
+
+                            Artefakt I
 
                         </p>
 
-                        <h2 className="mt-8 text-6xl font-semibold">
+                        <div className="relative mt-10 flex justify-center">
+
+                            <div className="artifact-spot" />
+
+                            <div className="artifact-glow-gold" />
+
+                            <Image
+                                src="/cover.jpg"
+                                alt="Band der Zeiten"
+                                width={280}
+                                height={430}
+                                className="artifact-cover rounded-xl shadow-[0_40px_80px_rgba(0,0,0,.65)]"
+                            />
+
+                        </div>
+
+                        <h3 className="mt-12 text-3xl font-semibold">
 
                             Band der Zeiten
 
-                        </h2>
+                        </h3>
 
-                        <h3 className="mt-4 text-3xl text-stone-300">
+                        <p className="mt-2 text-xl text-stone-400">
 
                             Zwischen zwei Welten
 
-                        </h3>
+                        </p>
 
-                        <p className="mt-10 text-xl leading-10 text-stone-300">
+                        <p className="mt-8 leading-9 text-stone-300">
 
-                            Eine Geschichte über Liebe,
-                            Mut,
-                            Verrat
-                            und die Suche nach Wahrheit –
-                            eingebettet in die raue Welt
-                            der Wikingerzeit.
+                            Der Auftakt einer epischen Zeitreise zwischen
+                            Gegenwart und Wikingerzeit. Eine Geschichte über
+                            Liebe, Mut, Verrat und die Macht des Schicksals.
 
                         </p>
 
-                        {/* Fakten */}
-
-                        <div className="mt-14 flex flex-wrap gap-3">
+                        <div className="mt-10 flex flex-wrap gap-3">
 
                             {[
                                 "306 Seiten",
-                                "Historischer Liebesroman",
-                                "Wikingerzeit",
-                                "Nordische Mythologie",
+                                "Taschenbuch",
                                 "Zeitreise",
-                                "Taschenbuch"
+                                "Wikinger",
+                                "Nordische Mythologie",
+                                "Historischer Roman"
                             ].map((item) => (
 
                                 <span
                                     key={item}
-                                    className="rounded-full border border-[#d8b16d]/40 px-5 py-2 text-sm text-stone-300"
+                                    className="rounded-full border border-[#c8a46b]/30 px-4 py-2 text-sm text-stone-300"
                                 >
                                     {item}
                                 </span>
@@ -83,20 +118,124 @@ export default function Book() {
 
                         </div>
 
-                        {/* Button */}
+                        <a
+                            href="https://www.amazon.de/Band-Zeiten-Zwischen-zwei-Welten/dp/B0H2Q2M2JG"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="mt-12 inline-flex rounded-full bg-[#c8a46b] px-8 py-4 font-semibold text-[#111] transition hover:scale-105"
+                        >
 
-                        <div className="mt-16">
+                            Bei Amazon entdecken
 
-                            <a
-                                href="https://www.amazon.de/Band-Zeiten-Zwischen-zwei-Welten/dp/B0H2Q2M2JG"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="rounded-full bg-[#d8b16d] px-10 py-5 font-semibold text-[#111] transition duration-300 hover:scale-105"
-                            >
-                                Jetzt bei Amazon ansehen
-                            </a>
+                        </a>
+
+                    </div>
+
+
+
+                    {/* ================================================= */}
+
+                    {/* SOUNDTRACK */}
+
+                    {/* ================================================= */}
+
+                    <div className="group rounded-3xl border border-white/15 bg-gradient-to-b from-white/[0.05] via-white/[0.025] to-white/[0.02] p-10 backdrop-blur-xl transition duration-500 hover:-translate-y-3 hover:border-[#5db8ff]/40 hover:shadow-[0_50px_120px_rgba(0,0,0,.65),0_0_90px_rgba(90,180,255,.18)]">
+
+                        <p className="uppercase tracking-[0.55em] text-xs text-[#d8b16d]/80">
+
+                            Artefakt II
+
+                        </p>
+
+                        <div className="relative mt-10 flex justify-center">
+
+                            <div className="artifact-spot" />
+
+                            <div className="artifact-glow-blue" />
+
+                            <Image
+                                src="/cover.jpg"
+                                alt="Original Soundtrack"
+                                width={280}
+                                height={430}
+                                className="artifact-cover rounded-xl shadow-[0_40px_80px_rgba(0,0,0,.65)]"
+                            />
 
                         </div>
+
+                        <h3 className="mt-12 text-3xl font-semibold">
+
+                            Original Soundtrack
+
+                        </h3>
+
+                        <p className="mt-2 text-xl text-stone-400">
+
+                            Musik aus der Welt von Band der Zeiten
+
+                        </p>
+
+                        <p className="mt-8 leading-9 text-stone-300">
+
+                            Atmosphärische Kompositionen zwischen nordischer
+                            Mystik, epischen Schlachten und leisen Momenten.
+                            Der Soundtrack begleitet die Reise von Maya und
+                            Alva und lässt die Welt des Romans musikalisch
+                            weiterleben.
+
+                        </p>
+
+                        <div className="mt-10 flex flex-wrap gap-3">
+
+                            {[
+                                "Original Soundtrack",
+                                "Filmmusik",
+                                "Digital",
+                                "Amazon Music",
+                                "Spotify",
+                                "Demnächst"
+                            ].map((item) => (
+
+                                <span
+                                    key={item}
+                                    className="rounded-full border border-[#c8a46b]/30 px-4 py-2 text-sm text-stone-300"
+                                >
+                                    {item}
+                                </span>
+
+                            ))}
+
+                        </div>
+
+                        <button
+                            className="mt-12 rounded-full border border-[#c8a46b]/40 px-8 py-4 text-[#c8a46b] transition hover:bg-[#c8a46b] hover:text-[#111]"
+                        >
+
+                            Bald verfügbar
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                {/* Footer */}
+
+                <div className="mt-28 text-center">
+
+                    <p className="uppercase tracking-[0.35em] text-[#c8a46b]">
+
+                        Erhältlich bei
+
+                    </p>
+
+                    <div className="mt-8 flex flex-wrap justify-center gap-8 text-stone-400">
+
+                        <span>Amazon</span>
+                        <span>Kindle</span>
+                        <span>Amazon Music</span>
+                        <span>Spotify</span>
 
                     </div>
 
@@ -105,6 +244,5 @@ export default function Book() {
             </div>
 
         </section>
-
     );
 }

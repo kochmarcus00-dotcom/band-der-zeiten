@@ -1,77 +1,44 @@
 export default function Story() {
   return (
     <section
-      id="story"
-      className="bg-[#090909] py-32 lg:py-40"
+      id="characters"
+      className="bg-[#090909] py-40"
     >
-      <div className="mx-auto max-w-6xl px-8">
 
-        <p className="uppercase tracking-[0.45em] text-[#d7b67c]">
+      <div className="mx-auto max-w-6xl px-8 text-center">
 
+        <p className="uppercase tracking-[0.45em] text-[#d8b16d]">
           Die Geschichte
-
         </p>
 
-        <h2 className="mt-6 text-5xl md:text-7xl font-semibold leading-tight">
-
-          Eine Liebe,
+        <h2 className="mt-10 text-6xl md:text-8xl font-semibold">
+          Ein Schritt
           <br />
-          die niemals
-          <br />
-          hätte entstehen dürfen.
-
+          verändert alles
         </h2>
 
-        <div className="mt-16 grid gap-16 lg:grid-cols-2">
+        <div className="mx-auto mt-14 h-px w-40 bg-[#d8b16d]" />
 
-          <div>
+        <p className="mx-auto mt-20 max-w-4xl text-xl leading-10 text-stone-300">
 
-            <p className="text-xl leading-10 text-stone-300">
+          Was als Abschlussfahrt nach Norwegen beginnt, entwickelt
+          sich zu einer Reise, die jede Vorstellung von Wirklichkeit
+          sprengt. Während ihre Mitschüler nur eine historische
+          Wanderung erwarten, fühlt sich Maya von einem uralten
+          Steinkreis magisch angezogen. Die verwitterten Runen,
+          rätselhafte Legenden und ein kaum hörbares Flüstern lassen
+          sie nicht mehr los.
 
-              Alva lebt nach den Gesetzen
-              ihrer Ahnen.
+          <br /><br />
 
-              <br /><br />
+          Als sie den Kreis allein betritt, antworten die Steine.
+          Die Runen beginnen zu leuchten, eine uralte Macht erwacht
+          und im nächsten Augenblick existiert die Welt, die Maya
+          kennt, nicht mehr. Plötzlich steht sie im Norwegen des
+          frühen Mittelalters – in einer Zeit, in der Götter,
+          Schicksal und Stahl den Lauf des Lebens bestimmen.
 
-              Sie kämpft.
-
-              Sie glaubt.
-
-              Sie gehorcht.
-
-              <br /><br />
-
-              Bis eines Tages eine Fremde
-              ihr gesamtes Weltbild erschüttert.
-
-            </p>
-
-          </div>
-
-          <div>
-
-            <p className="text-xl leading-10 text-stone-300">
-
-              Maya taucht unter rätselhaften
-              Umständen in Haukeli auf.
-
-              Niemand kennt ihre Herkunft.
-
-              Niemand versteht,
-              warum sie dort ist.
-
-              <br /><br />
-
-              Doch zwischen den beiden Frauen
-              entsteht etwas,
-              das stärker ist als Angst,
-              Tradition und Zeit.
-
-            </p>
-
-          </div>
-
-        </div>
+        </p>
 
       </div>
 
