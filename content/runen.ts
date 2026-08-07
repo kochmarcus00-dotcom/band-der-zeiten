@@ -1,7 +1,6 @@
 import { Article } from "./types";
 
 const article: Article = {
-
     slug: "runen",
 
     title: "Runen",
@@ -19,16 +18,41 @@ const article: Article = {
     excerpt:
         "Lorem ipsum dolor sit amet. Dieser Text dient zunächst als Platzhalter für die Vorschau des Artikels.",
 
-    content: `
-
+    sections: [
+        {
+            heading: "Die Ursprünge der Runen",
+            text: `
 Lorem ipsum dolor sit amet...
 
 Lorem ipsum dolor sit amet...
 
 Lorem ipsum dolor sit amet...
+            `,
+            image: "/blog/runen.jpg",
+        },
 
-`
+        {
+            heading: "Die Bedeutung der Runen",
+            text: `
+Lorem ipsum dolor sit amet...
 
+Lorem ipsum dolor sit amet...
+
+Lorem ipsum dolor sit amet...
+            `,
+        },
+
+        {
+            heading: "Runen in der Wikingerwelt",
+            text: `
+Lorem ipsum dolor sit amet...
+
+Lorem ipsum dolor sit amet...
+
+Lorem ipsum dolor sit amet...
+            `,
+        },
+    ],
 };
 
 export default article;

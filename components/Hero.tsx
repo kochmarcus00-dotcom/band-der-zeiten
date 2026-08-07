@@ -4,7 +4,7 @@ export default function Hero() {
     return (
         <section
             id="top"
-            className="relative h-screen overflow-hidden"
+            className="relative min-h-screen overflow-hidden"
         >
 
             {/* Hintergrund */}
@@ -26,8 +26,8 @@ export default function Hero() {
                 -top-40
                 left-1/2
                 -translate-x-1/2
-                w-[1600px]
-                h-[700px]
+                w-[900px] md:w-[1600px]
+h-[500px] md:h-[700px]
                 rounded-full
                 bg-cyan-300/20
                 blur-[180px]
@@ -42,8 +42,8 @@ export default function Hero() {
                 absolute
                 bottom-0
                 left-0
-                w-[700px]
-                h-[500px]
+                w-[400px] md:w-[700px]
+h-[300px] md:h-[500px]
                 rounded-full
                 bg-[#c8a46b]/20
                 blur-[160px]
@@ -83,7 +83,7 @@ export default function Hero() {
 
             {/* Inhalt */}
 
-            <div className="relative z-10 flex h-full items-center pt-20 lg:pt-32">
+            <div className="relative z-10 flex h-full items-center pt-24 md:pt-20 lg:pt-32">
 
                 <div className="mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-16">
 
@@ -101,11 +101,11 @@ export default function Hero() {
                             der Zeiten
                         </h1>
 
-                        <h2 className="mt-6 text-xl text-stone-300 md:text-2xl xl:text-3xl">
+                        <h2 className="mt-6 text-lg md:text-2xl xl:text-3xl text-stone-300">
                             Zwischen zwei Welten
                         </h2>
 
-                        <p className="mt-10 max-w-lg text-base leading-8 text-stone-300 md:text-lg">
+                        <p className="mt-8 md:mt-10 max-w-lg text-sm sm:text-base md:text-lg leading-7 md:leading-8 text-stone-300">
                             Im rauen Norwegen des 9. Jahrhunderts stellt die
                             Begegnung zweier Frauen alles infrage, woran sie
                             jemals geglaubt haben. Zwischen Ehre, Verrat und den
@@ -113,7 +113,7 @@ export default function Hero() {
                             entstehen dürfen.
                         </p>
 
-                        <div className="mt-12 flex flex-wrap gap-4">
+                        <div className="mt-10 md:mt-12 flex flex-col sm:flex-row gap-4">
 
                             <a
                                 href="#story"
@@ -163,7 +163,7 @@ export default function Hero() {
 
             {/* Scroll */}
 
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-[#c8a46b]">
+            <div className="absolute bottom-4 md:bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-[#c8a46b]">
 
                 ↓
 

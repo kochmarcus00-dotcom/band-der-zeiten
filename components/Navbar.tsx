@@ -18,22 +18,22 @@ export default function Navbar() {
     return (
         <header
             className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${scrolled
-                    ? "bg-[#090909]/90 backdrop-blur-md border-b border-white/10"
-                    : "bg-transparent"
+                ? "bg-[#090909]/90 backdrop-blur-md border-b border-white/10"
+                : "bg-transparent"
                 }`}
         >
-            <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-8">
+            <div className="mx-auto flex h-16 md:h-20 max-w-7xl items-center justify-between px-4 md:px-8">
 
                 {/* Logo */}
                 <a
                     href="#top"
-                    className="tracking-[0.35em] text-sm uppercase text-[#d8b16d]"
+                    className="tracking-[0.2em] md:tracking-[0.35em] text-xs md:text-sm uppercase text-[#d8b16d]"
                 >
                     Maria Raab
                 </a>
 
                 {/* Navigation */}
-                <nav className="hidden md:flex items-center gap-10 text-sm">
+                <nav className="flex flex-wrap justify-end gap-2 md:gap-8 text-[11px] md:text-sm">
 
                     <a href="#story" className="hover:text-[#d8b16d] transition">
                         Die Welt
@@ -63,16 +63,13 @@ export default function Navbar() {
 
                     <a
                         href="/impressum"
-                        className="hover:text-[#d8b16d] transition"
                     >
                         Impressum
                     </a>
 
                     <a
                         href="https://www.amazon.de/Band-Zeiten-Zwischen-zwei-Welten/dp/B0H2Q2M2JG"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[#d8b16d] hover:text-white transition"
+                        className="hidden md:block text-[#d8b16d] hover:text-white transition"
                     >
                         Amazon
                     </a>

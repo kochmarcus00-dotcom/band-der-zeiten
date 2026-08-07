@@ -1,7 +1,6 @@
 import { Article } from "./types";
 
 const article: Article = {
-
     slug: "odin",
 
     title: "Odin",
@@ -19,20 +18,41 @@ const article: Article = {
     excerpt:
         "Lorem ipsum dolor sit amet. Dieser Text dient zunächst als Platzhalter für die Vorschau des Artikels.",
 
-    content: `
+    sections: [
+        {
+            heading: "Der Wanderer",
+            text: `
+Lorem ipsum dolor sit amet.
 
-Lorem ipsum dolor sit amet...
+Lorem ipsum dolor sit amet.
 
-Lorem ipsum dolor sit amet...
+Lorem ipsum dolor sit amet.
+            `,
+            image: "/blog/odin.jpg",
+        },
 
-Lorem ipsum dolor sit amet...
+        {
+            heading: "Die Weisheit Odins",
+            text: `
+Lorem ipsum dolor sit amet.
 
-Lorem ipsum dolor sit amet...
+Lorem ipsum dolor sit amet.
 
-Lorem ipsum dolor sit amet...
+Lorem ipsum dolor sit amet.
+            `,
+        },
 
-`
+        {
+            heading: "Das Vermächtnis",
+            text: `
+Lorem ipsum dolor sit amet.
 
+Lorem ipsum dolor sit amet.
+
+Lorem ipsum dolor sit amet.
+            `,
+        },
+    ],
 };
 
 export default article;

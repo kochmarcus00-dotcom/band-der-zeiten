@@ -1,7 +1,6 @@
 import { Article } from "./types";
 
 const article: Article = {
-
     slug: "wikingerdorf",
 
     title: "Das Wikingerdorf",
@@ -19,20 +18,41 @@ const article: Article = {
     excerpt:
         "Lorem ipsum dolor sit amet. Dieser Text dient zunächst als Platzhalter für die Vorschau des Artikels.",
 
-    content: `
-
+    sections: [
+        {
+            heading: "Das Leben im Dorf",
+            text: `
 Lorem ipsum dolor sit amet...
 
 Lorem ipsum dolor sit amet...
 
 Lorem ipsum dolor sit amet...
+            `,
+            image: "/blog/wikingerdorf.jpg",
+        },
 
+        {
+            heading: "Handwerk und Handel",
+            text: `
 Lorem ipsum dolor sit amet...
 
 Lorem ipsum dolor sit amet...
 
-`
+Lorem ipsum dolor sit amet...
+            `,
+        },
 
+        {
+            heading: "Familie und Gemeinschaft",
+            text: `
+Lorem ipsum dolor sit amet...
+
+Lorem ipsum dolor sit amet...
+
+Lorem ipsum dolor sit amet...
+            `,
+        },
+    ],
 };
 
 export default article;

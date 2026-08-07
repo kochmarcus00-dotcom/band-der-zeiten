@@ -1,7 +1,6 @@
 import { Article } from "./types";
 
 const article: Article = {
-
     slug: "schildmaiden",
 
     title: "Schildmaiden",
@@ -19,20 +18,41 @@ const article: Article = {
     excerpt:
         "Lorem ipsum dolor sit amet. Dieser Text dient zunächst als Platzhalter für die Vorschau des Artikels.",
 
-    content: `
-
+    sections: [
+        {
+            heading: "Die Schildmaid",
+            text: `
 Lorem ipsum dolor sit amet...
 
 Lorem ipsum dolor sit amet...
 
 Lorem ipsum dolor sit amet...
+            `,
+            image: "/blog/schildmaiden.jpg",
+        },
 
+        {
+            heading: "Mythos und Wirklichkeit",
+            text: `
 Lorem ipsum dolor sit amet...
 
 Lorem ipsum dolor sit amet...
 
-`
+Lorem ipsum dolor sit amet...
+            `,
+        },
 
+        {
+            heading: "Frauen in der Wikingerzeit",
+            text: `
+Lorem ipsum dolor sit amet...
+
+Lorem ipsum dolor sit amet...
+
+Lorem ipsum dolor sit amet...
+            `,
+        },
+    ],
 };
 
 export default article;

@@ -55,9 +55,37 @@ export default async function ArticlePage({ params }: Props) {
 
                 </div>
 
-                <div className="mt-20 whitespace-pre-line text-xl leading-10 text-stone-300">
+                <div className="mt-20 space-y-20">
 
-                    {article.content}
+                    {article.sections.map((section, index) => (
+
+                        <section key={index}>
+
+                            <h2 className="text-4xl font-semibold mb-8">
+
+                                {section.heading}
+
+                            </h2>
+
+                            {section.image && (
+
+                                <img
+                                    src={section.image}
+                                    alt={section.heading}
+                                    className="mb-10 w-full rounded-3xl"
+                                />
+
+                            )}
+
+                            <div className="whitespace-pre-line text-xl leading-10 text-stone-300">
+
+                                {section.text}
+
+                            </div>
+
+                        </section>
+
+                    ))}
 
                 </div>
 
