@@ -133,12 +133,12 @@ export default function Footer() {
                     <br /><br />
 
                     E-Mail:
-                    kontakt@vikikg.de
+                    nordwind@valhalla-im-herzen.de
 
                     <br />
 
                     Website:
-                    www.vikikg.de
+                    https://www.valhalla-im-herzen.de
 
                 </div>
 

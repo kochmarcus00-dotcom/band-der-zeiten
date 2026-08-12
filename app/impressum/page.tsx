@@ -47,9 +47,9 @@ export default function ImpressumPage() {
                             <p className="leading-8 text-stone-300">
                                 Maria Raab
                                 <br />
-                                Straße Hausnummer
+                                An d. Butterburg 1
                                 <br />
-                                PLZ Ort
+                                26553 Dornum
                                 <br />
                                 Deutschland
                             </p>
@@ -61,7 +61,7 @@ export default function ImpressumPage() {
                             </h2>
 
                             <p className="leading-8 text-stone-300">
-                                E-Mail: info@vikikg.de
+                                E-Mail: nordwind@valhalla-im-herzen.de
                             </p>
                         </section>
 

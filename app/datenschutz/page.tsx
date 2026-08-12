@@ -49,9 +49,13 @@ export default function DatenschutzPage() {
                             <p className="leading-8 text-stone-300">
                                 Maria Raab
                                 <br />
-                                (Anschrift folgt im Impressum)
+                                An d. Butterburg 1
                                 <br />
-                                E-Mail: ...
+                                26553 Dornum
+                                <br />
+                                Deutschland
+                                <br />
+                                E-Mail: nordwind@valhalla-im-herzen.de
                             </p>
                         </section>
 
