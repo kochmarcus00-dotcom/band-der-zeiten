@@ -1,0 +1,99 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Product {
+  id          String      @id @default(cuid())
+  name        String
+  slug        String      @unique
+  category    String
+  description String
+  price       Decimal     @db.Decimal(10, 2)
+  image       String
+  rune        String
+  glow        String
+  available   Boolean     @default(true)
+  placeholder Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  orderItems  OrderItem[]
+
+  @@index([category])
+  @@index([available])
+}
+
+model Customer {
+  id           String      @id @default(cuid())
+  firstName    String
+  lastName     String
+  email        String
+  phone        String?
+  street       String
+  houseNumber  String
+  postalCode   String
+  city         String
+  country      String      @default("DE")
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  orders       Order[]
+
+  @@index([email])
+}
+
+model Order {
+  id              String        @id @default(cuid())
+  customerId      String
+  status          OrderStatus   @default(PENDING)
+  paymentStatus   PaymentStatus @default(PENDING)
+  subtotal        Decimal       @db.Decimal(10, 2)
+  shipping        Decimal       @db.Decimal(10, 2)
+  total           Decimal       @db.Decimal(10, 2)
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  customer        Customer      @relation(fields: [customerId], references: [id])
+  items           OrderItem[]
+
+  @@index([customerId])
+  @@index([status])
+  @@index([paymentStatus])
+  @@index([createdAt])
+}
+
+model OrderItem {
+  id          String   @id @default(cuid())
+  orderId     String
+  productId   String
+  productName String
+  price       Decimal  @db.Decimal(10, 2)
+  quantity    Int
+
+  order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product     Product  @relation(fields: [productId], references: [id])
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  PROCESSING
+  SHIPPED
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
