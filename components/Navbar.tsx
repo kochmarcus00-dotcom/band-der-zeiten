@@ -18,11 +18,10 @@ export default function Navbar() {
 
     return (
         <header
-            className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${
-                scrolled
+            className={`fixed left-0 top-0 z-50 w-full transition-all duration-500 ${scrolled
                     ? "bg-[#090909]/90 backdrop-blur-md border-b border-white/10"
                     : "bg-transparent"
-            }`}
+                }`}
         >
             <div className="mx-auto flex h-16 md:h-20 max-w-7xl items-center justify-between px-4 md:px-8">
 
@@ -63,7 +62,8 @@ export default function Navbar() {
                         href="/#book"
                         className="hover:text-[#d8b16d] transition"
                     >
-                        Buch
+                        Freyjas
+                        Schatzkammer
                     </a>
 
                     <a

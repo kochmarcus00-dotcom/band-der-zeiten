@@ -2,23 +2,37 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-import type { Product } from "./page";
+import { useEffect, useState } from "react";
+import type { ShopProduct } from "../../lib/shop-types";
 
 type CartItem = {
-    product: Product;
+    product: ShopProduct;
     quantity: number;
 };
 
 export default function ShopClient({
     products,
 }: {
-    products: Product[];
+    products: ShopProduct[];
 }) {
     const [cart, setCart] = useState<CartItem[]>([]);
     const [cartOpen, setCartOpen] = useState(false);
+    useEffect(() => {
+        try {
+            const savedCart = localStorage.getItem("viking-cart");
 
-    function addToCart(product: Product) {
+            if (savedCart) {
+                setCart(JSON.parse(savedCart));
+            }
+        } catch {
+            localStorage.removeItem("viking-cart");
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("viking-cart", JSON.stringify(cart));
+    }, [cart]);
+    function addToCart(product: ShopProduct) {
         setCart((current) => {
             const existing = current.find(
                 (item) => item.product.id === product.id
@@ -41,7 +55,7 @@ export default function ShopClient({
         setCartOpen(true);
     }
 
-    function changeQuantity(productId: number, amount: number) {
+    function changeQuantity(productId: string, amount: number) {
         setCart((current) =>
             current
                 .map((item) =>
@@ -56,7 +70,7 @@ export default function ShopClient({
         );
     }
 
-    function removeFromCart(productId: number) {
+    function removeFromCart(productId: string) {
         setCart((current) =>
             current.filter((item) => item.product.id !== productId)
         );
@@ -82,14 +96,15 @@ export default function ShopClient({
         <main className="min-h-screen overflow-x-hidden bg-[#090909] text-white">
 
             {/* NAVIGATION */}
-            <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#090909]/85 backdrop-blur-md">
+            {/* SHOP-KOPF */}
+            <header className="fixed left-0 top-0 z-50 w-full border-b border-white/10 bg-[#090909]/90 backdrop-blur-md">
                 <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:h-20 md:px-8">
 
                     <Link
                         href="/"
-                        className="text-sm uppercase tracking-[0.3em] text-[#d8b16d] transition hover:text-white"
+                        className="text-sm text-[#d8b16d] transition hover:text-white"
                     >
-                        Freyjas Feder
+                        ← Zur Hauptseite
                     </Link>
 
                     <button
@@ -312,6 +327,10 @@ export default function ShopClient({
 
                                 <button
                                     type="button"
+                                    onClick={() => {
+                                        setCartOpen(false);
+                                        window.location.href = "/vikingshop/checkout";
+                                    }}
                                     className="mt-6 w-full rounded-full bg-[#c8a46b] px-6 py-4 font-semibold text-[#111] transition hover:bg-[#d8b16d] hover:scale-[1.02]"
                                 >
                                     Zur Kasse
@@ -323,7 +342,32 @@ export default function ShopClient({
                     </aside>
                 </div>
             )}
+            {/* FOOTER */}
+            <footer className="border-t border-white/10 px-6 py-10 md:px-8">
+                <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-sm text-stone-500 md:flex-row">
 
+                    <p>
+                        © {new Date().getFullYear()} Freyjas Feder
+                    </p>
+
+                    <div className="flex gap-6">
+                        <Link
+                            href="/datenschutz"
+                            className="transition hover:text-[#d8b16d]"
+                        >
+                            Datenschutz
+                        </Link>
+
+                        <Link
+                            href="/impressum"
+                            className="transition hover:text-[#d8b16d]"
+                        >
+                            Impressum
+                        </Link>
+                    </div>
+
+                </div>
+            </footer>
         </main>
     );
 }
@@ -332,7 +376,7 @@ function ProductCard({
     product,
     onAdd,
 }: {
-    product: Product;
+    product: ShopProduct;
     onAdd: () => void;
 }) {
     const glowClass = {
@@ -409,5 +453,6 @@ function ProductCard({
 
             </div>
         </article>
+
     );
 }
