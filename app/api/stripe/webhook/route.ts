@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { prisma } from "@/lib/prisma";
+import { sendOrderEmail } from "@/lib/send-order-email";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
@@ -27,13 +28,38 @@ export async function POST(request: Request) {
 
         switch (event.type) {
             case "checkout.session.completed": {
-                const session = event.data.object as Stripe.Checkout.Session;
+                const session =
+                    event.data.object as Stripe.Checkout.Session;
 
                 const orderId = session.metadata?.orderId;
 
                 if (!orderId) {
                     console.error(
                         "Stripe Session enthält keine orderId."
+                    );
+                    break;
+                }
+
+                const order = await prisma.order.findUnique({
+                    where: {
+                        id: orderId,
+                    },
+                    include: {
+                        customer: true,
+                        items: true,
+                    },
+                });
+
+                if (!order) {
+                    console.error(
+                        `Bestellung ${orderId} wurde nicht gefunden.`
+                    );
+                    break;
+                }
+
+                if (order.paymentStatus === "PAID") {
+                    console.log(
+                        `Bestellung ${orderId} ist bereits bezahlt. Event wird ignoriert.`
                     );
                     break;
                 }
@@ -51,6 +77,27 @@ export async function POST(request: Request) {
                 console.log(
                     `Bestellung ${orderId} wurde als PAID markiert.`
                 );
+
+                try {
+                    await sendOrderEmail({
+                        to: order.customer.email,
+                        firstName: order.customer.firstName,
+                        orderId: order.id,
+                        subtotal: order.subtotal,
+                        shipping: order.shipping,
+                        total: order.total,
+                        items: order.items,
+                    });
+
+                    console.log(
+                        `Bestellbestätigung für ${orderId} wurde versendet.`
+                    );
+                } catch (emailError) {
+                    console.error(
+                        `Bestellbestätigung für ${orderId} konnte nicht versendet werden:`,
+                        emailError
+                    );
+                }
 
                 break;
             }

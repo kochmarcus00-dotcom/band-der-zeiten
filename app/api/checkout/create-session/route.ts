@@ -141,9 +141,9 @@ export async function POST(request: Request) {
                         product_data: {
                             name: item.product.name,
                             description: item.product.description,
-                            images: item.product.image
-                                ? [item.product.image]
-                                : undefined,
+                            ...(item.product.image?.startsWith("http")
+                                ? { images: [item.product.image] }
+                                : {}),
                         },
                         unit_amount: Math.round(
                             Number(item.product.price) * 100
@@ -175,7 +175,14 @@ export async function POST(request: Request) {
             cancel_url:
                 `${process.env.NEXT_PUBLIC_SITE_URL}/vikingshop/checkout`,
         });
-
+        await prisma.order.update({
+            where: {
+                id: order.id,
+            },
+            data: {
+                stripeSessionId: session.id,
+            },
+        });
         return NextResponse.json({
             url: session.url,
         });
