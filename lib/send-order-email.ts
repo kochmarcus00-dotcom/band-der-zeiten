@@ -1,7 +1,4 @@
 import { Resend } from "resend";
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 type OrderEmailItem = {
     productName: string;
     quantity: number;
@@ -34,10 +31,13 @@ export async function sendOrderEmail({
     total,
     items,
 }: SendOrderEmailParams) {
-    if (!process.env.RESEND_API_KEY) {
+    const resendKey = process.env.RESEND_API_KEY;
+
+    if (!resendKey) {
         throw new Error("RESEND_API_KEY fehlt.");
     }
 
+    const resend = new Resend(resendKey);
     const itemsHtml = items
         .map(
             (item) => `
