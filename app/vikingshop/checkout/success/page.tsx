@@ -2,8 +2,6 @@ import Stripe from "stripe";
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
 type SuccessPageProps = {
     searchParams: Promise<{
         session_id?: string;
@@ -20,21 +18,28 @@ export default async function CheckoutSuccessPage({
 
     if (sessionId) {
         try {
-            const session = await stripe.checkout.sessions.retrieve(
-                sessionId
-            );
+            const stripeKey = process.env.STRIPE_SECRET_KEY;
 
-            const orderId = session.metadata?.orderId;
+            if (!stripeKey) {
+                console.error("STRIPE_SECRET_KEY fehlt.");
+            } else {
+                const stripe = new Stripe(stripeKey);
 
-            if (orderId) {
-                order = await prisma.order.findUnique({
-                    where: {
-                        id: orderId,
-                    },
-                    include: {
-                        items: true,
-                    },
-                });
+                const session =
+                    await stripe.checkout.sessions.retrieve(sessionId);
+
+                const orderId = session.metadata?.orderId;
+
+                if (orderId) {
+                    order = await prisma.order.findUnique({
+                        where: {
+                            id: orderId,
+                        },
+                        include: {
+                            items: true,
+                        },
+                    });
+                }
             }
         } catch (error) {
             console.error(
@@ -80,7 +85,6 @@ export default async function CheckoutSuccessPage({
                         </div>
 
                         <div className="mt-5 space-y-4">
-
                             {order.items.map((item) => (
                                 <div
                                     key={item.id}
@@ -93,13 +97,12 @@ export default async function CheckoutSuccessPage({
 
                                         <p className="text-sm text-stone-500">
                                             {item.quantity} ×{" "}
-                                            {Number(item.price).toLocaleString(
-                                                "de-DE",
-                                                {
-                                                    style: "currency",
-                                                    currency: "EUR",
-                                                }
-                                            )}
+                                            {Number(
+                                                item.price
+                                            ).toLocaleString("de-DE", {
+                                                style: "currency",
+                                                currency: "EUR",
+                                            })}
                                         </p>
                                     </div>
 
@@ -114,7 +117,6 @@ export default async function CheckoutSuccessPage({
                                     </p>
                                 </div>
                             ))}
-
                         </div>
 
                         <div className="mt-6 border-t border-white/10 pt-5">
