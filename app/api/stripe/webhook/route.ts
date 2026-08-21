@@ -2,9 +2,6 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { prisma } from "@/lib/prisma";
 import { sendOrderEmail } from "@/lib/send-order-email";
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
 export async function POST(request: Request) {
     const signature = request.headers.get("stripe-signature");
 
@@ -16,6 +13,16 @@ export async function POST(request: Request) {
     }
 
     try {
+        const stripeKey = process.env.STRIPE_SECRET_KEY;
+
+        if (!stripeKey) {
+            return NextResponse.json(
+                { error: "Stripe ist noch nicht konfiguriert." },
+                { status: 503 }
+            );
+        }
+
+        const stripe = new Stripe(stripeKey);
         const body = await request.text();
 
         const event = stripe.webhooks.constructEvent(
