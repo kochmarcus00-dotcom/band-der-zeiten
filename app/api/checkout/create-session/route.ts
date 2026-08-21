@@ -8,6 +8,11 @@ export async function POST(request: Request) {
     try {
         const stripeKey = process.env.STRIPE_SECRET_KEY;
 
+        console.log(
+            "STRIPE CHECKOUT KEY:",
+            stripeKey ? "VORHANDEN" : "FEHLT"
+        );
+
         if (!stripeKey) {
             return NextResponse.json(
                 { error: "Stripe ist noch nicht konfiguriert." },
