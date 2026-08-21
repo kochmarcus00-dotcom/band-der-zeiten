@@ -2,12 +2,21 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { prisma } from "@/lib/prisma";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-
 const SHIPPING = 4.9;
 
 export async function POST(request: Request) {
     try {
+        const stripeKey = process.env.STRIPE_SECRET_KEY;
+
+        if (!stripeKey) {
+            return NextResponse.json(
+                { error: "Stripe ist noch nicht konfiguriert." },
+                { status: 503 }
+            );
+        }
+
+        const stripe = new Stripe(stripeKey);
+
         const body = await request.json();
 
         const {
