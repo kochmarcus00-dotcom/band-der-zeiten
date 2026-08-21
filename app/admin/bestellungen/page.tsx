@@ -1,8 +1,15 @@
 import { revalidatePath } from "next/cache";
 import { prisma } from "@/lib/prisma";
+import { requireAdminAction } from "@/lib/admin-auth-action";
+import LogoutButton from "../LogoutButton";
+import AdminHeader from "../AdminHeader";
 
 async function updateOrderStatus(formData: FormData) {
     "use server";
+
+    await requireAdminAction();
+
+    // alles darunter bleibt exakt wie es ist
 
     const orderId = String(formData.get("orderId") || "");
     const status = String(formData.get("status") || "");
@@ -106,9 +113,7 @@ export default async function BestellungenAdmin() {
                         VikingShop Admin
                     </p>
 
-                    <h1 className="font-serif text-4xl">
-                        Bestellungen
-                    </h1>
+                    <AdminHeader title="Bestellungen" />
 
                     <p className="mt-3 text-stone-400">
                         {orders.length}{" "}
@@ -142,10 +147,10 @@ export default async function BestellungenAdmin() {
 
                                             <span
                                                 className={`rounded-full border px-3 py-1 text-xs ${order.paymentStatus === "PAID"
-                                                        ? "border-green-500/40 text-green-400"
-                                                        : order.paymentStatus === "FAILED"
-                                                            ? "border-red-500/40 text-red-400"
-                                                            : "border-[#c8a46b]/40 text-[#c8a46b]"
+                                                    ? "border-green-500/40 text-green-400"
+                                                    : order.paymentStatus === "FAILED"
+                                                        ? "border-red-500/40 text-red-400"
+                                                        : "border-[#c8a46b]/40 text-[#c8a46b]"
                                                     }`}
                                             >
                                                 Zahlung:{" "}

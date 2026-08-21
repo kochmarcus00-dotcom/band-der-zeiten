@@ -4,9 +4,16 @@ import { prisma } from "../../../lib/prisma";
 import EditProductForm from "./EditProductForm";
 import NewProductForm from "./NewProductForm";
 import DeleteProductButton from "./DeleteProductButton";
+import { requireAdminAction } from "@/lib/admin-auth-action";
+import LogoutButton from "../LogoutButton";
+import AdminHeader from "../AdminHeader";
 
 async function createProduct(formData: FormData) {
     "use server";
+
+    await requireAdminAction();
+
+    // Rest unverändert
 
     const name = String(formData.get("name") || "").trim();
     const category = String(formData.get("category") || "").trim();
@@ -55,6 +62,9 @@ export async function updateProduct(
 ) {
     "use server";
 
+    await requireAdminAction();
+
+    // Rest unverändert
     const id = String(formData.get("id") || "");
     const name = String(formData.get("name") || "").trim();
     const category = String(formData.get("category") || "").trim();
@@ -158,6 +168,10 @@ export async function updateProduct(
 async function deleteProduct(formData: FormData) {
     "use server";
 
+    await requireAdminAction();
+
+    // Rest unverändert
+
     const id = String(formData.get("id") || "");
 
     if (!id) {
@@ -218,27 +232,12 @@ export default async function ProdukteAdmin() {
             <div className="mx-auto max-w-6xl">
 
                 {/* HEADER */}
-                <div className="mb-12 flex items-center justify-between gap-6">
-                    <div>
-                        <p className="text-xs uppercase tracking-[0.3em] text-[#c8a46b]">
-                            Freyjas Schatzkammer
-                        </p>
+                <div className="mb-10">
+                    <p className="mb-3 text-sm uppercase tracking-[0.3em] text-[#c8a46b]">
+                        VikingShop Admin
+                    </p>
 
-                        <h1 className="mt-3 text-4xl font-semibold md:text-5xl">
-                            Produkte
-                        </h1>
-
-                        <p className="mt-4 text-stone-400">
-                            Produkte verwalten und neue Produkte hinzufügen.
-                        </p>
-                    </div>
-
-                    <a
-                        href="/vikingshop"
-                        className="rounded-full border border-white/20 px-5 py-3 text-sm transition hover:border-[#c8a46b] hover:text-[#d8b16d]"
-                    >
-                        Zum Shop
-                    </a>
+                    <AdminHeader title="Bestellungen" />
                 </div>
 
                 {/* NEUES PRODUKT */}
