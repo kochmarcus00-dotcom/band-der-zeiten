@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
 export default async function NordischeWelt() {
     const articles = await prisma.blogArticle.findMany({
         where: {
