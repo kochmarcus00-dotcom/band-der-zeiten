@@ -86,8 +86,8 @@ export default async function ArticlePage({ params }: Props) {
                             width={1800}
                             height={1100}
                             priority
-                            sizes="(max-width: 768px) 100vw, 1200px"
-                            className="h-[300px] w-full object-cover sm:h-[450px] md:h-[600px]"
+                            sizes="(max-width: 768px) 100vw, 1100px"
+                            className="mx-auto h-auto max-h-[480px] w-auto max-w-full object-contain"
                         />
                     </div>
                 </section>
@@ -144,13 +144,13 @@ export default async function ArticlePage({ params }: Props) {
                                                 width={1400}
                                                 height={900}
                                                 sizes="(max-width: 768px) 100vw, 900px"
-                                                className="max-h-[650px] w-full object-cover"
+                                                className="mx-auto h-auto max-h-[480px] w-auto max-w-full object-contain"
                                             />
                                         </div>
                                     )}
 
                                     {section.text && (
-                                        <div className="whitespace-pre-line text-lg leading-[2] text-stone-300 md:text-xl md:leading-[2.1]">
+                                        <div className="text-lg leading-[1.75] tracking-normal text-stone-300 md:text-xl md:leading-[1.8]">
                                             {section.text}
                                         </div>
                                     )}
