@@ -37,7 +37,7 @@ async function createArticle(formData: FormData) {
             author,
             date,
             excerpt,
-            published: false,
+            published: true,
         },
     });
 
